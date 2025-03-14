@@ -15,8 +15,7 @@ class Table{
 		table check;
 		Table(int n);
 		void prt_table(int limit=10);
-
-	
+		
 	private:
 	
 };
@@ -67,17 +66,28 @@ int main(int argc, char const *argv[])
 	Table table(35);
 	table.prt_table(10);
 	/*
-	 * Consider numbers 2..10 as 'pivot' number and construct all possible triples
+	 * Consider numbers 2..10 as 'pivot' numbers and construct possible triples
 	 */
+	 vector<int> suffix;
+	 
 	for(int pivot = 8; pivot < 9; ++pivot){
-		// get list/vector of totients for pivot. These form the prefix and suffix numbers
+		// make list/vector of totients for pivot. These form the prefix and suffix numbers
 		for(auto t : table.check[pivot]) {
 			if(t > limit) break;
-			cout << t << " ";
+			suffix.push_back(t);
 		}
-		cout << endl;
-		
-		
+		cout << endl;		
 	}
+	
+	for(auto s : suffix) cout << " " << s;
+	cout << endl;
+	
+	for(auto m : suffix){
+		for(auto n : suffix){
+			if(m==n) continue;
+			cout << m << " " << 8 << " " << n << endl;
+		}
+	}
+	
 	return 0;
 }
