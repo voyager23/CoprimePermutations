@@ -1,57 +1,12 @@
 #include<numeric>
 #include<cstdint>
 #include<iostream>
-#include<vector>
 #include<utility>
 #include<deque>
 
 using namespace std;
 
-typedef std::deque<uint64_t> CoprimePerm;
-typedef vector<vector<int>> table;
-
-class Table{
-	public:
-		table check;
-		Table(int n);
-		void prt_table(int limit=10);
-		
-	private:
-	
-};
-
-Table::Table(int x){
-	// x is the highest index required
-	for(auto c = 0; c < x+1; ++c)
-	{
-		check.push_back(vector<int>{});
-	}
-	
-	// initialise lookup for range 2..x
-	// use row,col indexes n,m
-	for(auto n = 2; n <= x; ++n){
-		for(auto m = 2; m <= x; ++m){
-			if ((n==m) or (gcd(n,m) != 1)) continue;	// retain zero value;
-			check[n].push_back(m);		
-		}
-	}
-	
-}
-
-void Table::prt_table(int limit){
-	// debug display
-	cout << "Read across for each N value" << endl;
-	for(auto n = 2; n <= 34; ++n){
-		if(n > limit) break;
-		cout << n << ") ";
-		// table.check[i] is a vector
-		for(auto i : check[n]) 
-			if(i <= limit) cout << i << " ";
-			else break;
-		cout << endl;
-	}	
-}
-
+#include "./table.hpp"
 
 int main(int argc, char const *argv[])
 {
@@ -82,6 +37,7 @@ int main(int argc, char const *argv[])
 	for(auto s : suffix) cout << " " << s;
 	cout << endl;
 	
+	// select permutations of prefix and suffix
 	for(auto m : suffix){
 		for(auto n : suffix){
 			if(m==n) continue;

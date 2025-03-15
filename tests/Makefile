@@ -5,10 +5,10 @@ DEBUG = -g
 
 
 
-dequeue : dequeue.cpp
+dequeue : dequeue.cpp table.cpp
 	@echo "Clearing"
 	clear
-	g++ $(CFLAGS) $(DEBUG) $@.cpp -o ../bin/$@
+	g++ $(CFLAGS) $(DEBUG) $@.cpp table.cpp -o ../bin/$@
 	@ln -fs ../bin/$@ ../bin/bin_link
 	@symlinks -v ../bin
 	
