@@ -28,6 +28,10 @@
 
 int main(int argc, char **argv)
 {
+	ScanPairs scanpairs(34);
+	do{
+		scanpairs.pairwise_scan();
+	}while (scanpairs.scan_flag == true);
 	
 	return 0;
 }
