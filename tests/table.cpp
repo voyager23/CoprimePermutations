@@ -28,34 +28,35 @@
 
 using namespace std;
 
-Table::Table(int x){
-	// x is the highest index required
-	for(auto c = 0; c < x+1; ++c)
-	{
-		check.push_back(vector<int>{});
-	}
-	
-	// initialise lookup for range 2..x
-	// use row,col indexes n,m
-	for(auto n = 2; n <= x; ++n){
-		for(auto m = 2; m <= x; ++m){
-			if ((n==m) or (gcd(n,m) != 1)) continue;	// retain zero value;
-			check[n].push_back(m);		
+Table::Table(){
+	// construct coprimes 2 <= N < 35;
+	//coprimes maps "8" to vector<"3","5","7","9"...> etc
+	for(int n = 2; n < 35; ++n){
+		vector<string> temp;
+		for(int m = 2; m < 35; ++m){
+			if((n==m) or (gcd(n,m)!=1)) continue;
+			temp.push_back(to_string(m));
 		}
+		coprimes.emplace(to_string(n),temp);
 	}
-	
 }
 
+
 void Table::prt_table(int limit){
-	// debug display
-	cout << "Read across for each N value" << endl;
-	for(auto n = 2; n <= 34; ++n){
-		if(n > limit) break;
-		cout << n << ") ";
-		// table.check[i] is a vector
-		for(auto i : check[n]) 
-			if(i <= limit) cout << i << " ";
-			else break;
+	string s_lim = to_string(limit);
+	cout << "Read across for each value of N" << endl;
+	for(int n = 2; n<= limit; ++n){
+		auto i = coprimes.find(to_string(n));
+		if(i == coprimes.end()){
+			cout << "Key " << n << " not found in prt_table\n";
+			return;
+		}
+		cout << i->first<< ")\t";
+		// i.second is vector of strings
+		for(auto j : i->second){
+			if(stoi(j) > limit) break;
+			cout << j << " ";
+		}
 		cout << endl;
 	}	
 }

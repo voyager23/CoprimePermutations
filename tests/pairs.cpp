@@ -1,5 +1,5 @@
 /*
- * table.hpp
+ * pairs.cpp
  * 
  * Copyright 2025 mike <mike@xps14>
  * 
@@ -21,20 +21,14 @@
  * 
  */
 
-#include <vector>
-#include <string>
-#include <map>
 
-using namespace std;
+#include <iostream>
+#include <algorithm>
+#include "./scanpairs.hpp"
 
-class Table{
-	public:
-		map<string, vector<string>> coprimes;
-		//vector<vector<int>> check;
-		Table();
-		void prt_table(int limit);
-		
-	private:
+int main(int argc, char **argv)
+{
 	
-};
+	return 0;
+}
 

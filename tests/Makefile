@@ -3,8 +3,20 @@
 CFLAGS = --std=c++20 
 DEBUG = -g
 
-
-
+pairs : pairs.cpp scanpairs.cpp
+	@echo "Pairs - Clearing"
+	clear
+	g++ $(CFLAGS) $(DEBUG) $@.cpp scanpairs.cpp -o ../bin/$@
+	@ln -fs ../bin/$@ ../bin/bin_link
+	@symlinks -v ../bin
+	
+test_table : test_table.cpp table.cpp
+	@echo "Clearing"
+	clear
+	g++ $(CFLAGS) $(DEBUG) $@.cpp table.cpp -o ../bin/$@
+	@ln -fs ../bin/$@ ../bin/bin_link
+	@symlinks -v ../bin
+	
 dequeue : dequeue.cpp table.cpp
 	@echo "Clearing"
 	clear
