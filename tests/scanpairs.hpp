@@ -35,8 +35,8 @@ class ScanPairs{
 			// return true if lhs < rhs
 			{
 				if (get<0>(lhs) < get<0>(rhs)) return true;
-				if (get<1>(lhs) < get<1>(rhs)) return true;
-				if (get<2>(lhs) < get<2>(rhs)) return true;
+				if ((get<0>(lhs) == get<0>(rhs))and(get<1>(lhs) < get<1>(rhs))) return true;
+				//if (get<2>(lhs) < get<2>(rhs)) return true;
 				return false;
 			}
 		};
@@ -54,5 +54,5 @@ class ScanPairs{
 		};
 		
 		set<Triple, FwdCmp> fwdset;
-		set<Triple, BakCmp> bakset;	
+		set<Triple, FwdCmp> bakset;	
 };

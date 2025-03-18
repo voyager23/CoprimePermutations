@@ -46,8 +46,8 @@ void ScanPairs::pairwise_scan(){
 
 void ScanPairs::triples(){
 	// Places triples in instance results vector
-	vector<int> even{2,4,6,8};
-	vector<int> odd{3,5,7};
+	vector<int> even{2,4,6,8,10};
+	vector<int> odd{3,5,7,9};
 	Triple triple;
 	int x,y,z; //indexes
 	if(results.empty()==false) results.clear();
@@ -74,12 +74,15 @@ void ScanPairs::make_fwd_set(){
 
 
 void ScanPairs::make_bak_set(){
+	Triple reversed;
 	if(bakset.empty()== false) bakset.clear();
 	// filter results to fwd_set using bak comparison
-	for(auto t : results)
-		bakset.emplace(t);		
+	for(auto t : results){
+		reversed = {get<2>(t), get<1>(t), get<0>(t)};
+		bakset.emplace(reversed);		
 	}
-	
+}
+
 void ScanPairs::prt_fwd_set(){
 	for(auto t : fwdset) cout << get<0>(t) << " " << get<1>(t) << " " << get<2>(t) << endl;
 	}
