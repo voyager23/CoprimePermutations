@@ -57,8 +57,8 @@ void ScanPairs::triples(){
 				if ((gcd(even[x], odd[z]) == 1) and (gcd(even[y], odd[z]) == 1)){
 					triple = {even[x], odd[z], even[y]};
 					results.push_back(triple);
-					//for(auto t : triple) cout << t << " ";
-					//cout << endl;
+					for(auto t : triple) cout << t << " ";
+					cout << endl;
 				}
 			}
 		}
@@ -78,16 +78,18 @@ void ScanPairs::make_bak_set(){
 	if(bakset.empty()== false) bakset.clear();
 	// filter results to fwd_set using bak comparison
 	for(auto t : results){
-		reversed = {get<2>(t), get<1>(t), get<0>(t)};
+		reversed = {get<0>(t), get<1>(t), get<2>(t)};
 		bakset.emplace(reversed);		
 	}
 }
 
 void ScanPairs::prt_fwd_set(){
+	cout << "Sort on LSD Set" << endl;
 	for(auto t : fwdset) cout << get<0>(t) << " " << get<1>(t) << " " << get<2>(t) << endl;
 	}
 	
 void ScanPairs::prt_bak_set(){
+	cout << "Sort on MSD Set" << endl;
 	for(auto t : bakset) cout << get<0>(t) << " " << get<1>(t) << " " << get<2>(t) << endl;
 	}
 

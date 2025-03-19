@@ -38,6 +38,7 @@ int main(int argc, char **argv)
 	scanpairs.make_fwd_set();
 	scanpairs.make_bak_set();
 	cout << endl;
+	
 	scanpairs.prt_fwd_set();
 	cout << endl;
 	scanpairs.prt_bak_set();

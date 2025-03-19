@@ -17,8 +17,10 @@ class ScanPairs{
 		bool scan_flag;
 		//-------------------------
 		void triples();	//Test Code
-		void make_fwd_set();
-		void make_bak_set();
+		
+		void make_fwd_set();	// sorted by first value
+		void make_bak_set();	// sorted by last value
+		
 		void prt_fwd_set();
 		void prt_bak_set();
 						
@@ -36,8 +38,7 @@ class ScanPairs{
 			{
 				if (get<0>(lhs) < get<0>(rhs)) return true;
 				if ((get<0>(lhs) == get<0>(rhs))and(get<1>(lhs) < get<1>(rhs))) return true;
-				//if (get<2>(lhs) < get<2>(rhs)) return true;
-				return false;
+				return (get<2>(lhs) < get<2>(rhs));
 			}
 		};
 		
@@ -47,12 +48,11 @@ class ScanPairs{
 			// reverse comparison order
 			{
 				if (get<2>(lhs) < get<2>(rhs)) return true;
-				if (get<1>(lhs) < get<1>(rhs)) return true;
-				if (get<0>(lhs) < get<0>(rhs)) return true;
-				return false;
+				if ((get<2>(lhs) == get<2>(rhs))and(get<1>(lhs) < get<1>(rhs))) return true;
+				return (get<0>(lhs) < get<0>(rhs));
 			}
 		};
 		
 		set<Triple, FwdCmp> fwdset;
-		set<Triple, FwdCmp> bakset;	
+		set<Triple, BakCmp> bakset;	
 };
