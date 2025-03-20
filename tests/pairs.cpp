@@ -24,7 +24,8 @@
 
 #include <iostream>
 #include <algorithm>
-#include "./scanpairs.hpp"
+#include "../inc/scanpairs.hpp"
+#include "../inc/copmpr.hpp"
 
 int main(int argc, char **argv)
 {
@@ -33,15 +34,16 @@ int main(int argc, char **argv)
 		scanpairs.pairwise_scan();
 	}while (scanpairs.scan_flag == true);
 	
-	scanpairs.triples();
+	ScanPairs sp;
+	sp.triples(10);
 	
-	scanpairs.make_fwd_set();
-	scanpairs.make_bak_set();
+	sp.make_fwd_set();
+	sp.make_bak_set();
 	cout << endl;
 	
-	scanpairs.prt_fwd_set();
+	sp.prt_fwd_set();
 	cout << endl;
-	scanpairs.prt_bak_set();
+	sp.prt_bak_set();
 	
 	return 0;
 }

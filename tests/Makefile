@@ -3,10 +3,10 @@
 CFLAGS = --std=c++20 
 DEBUG = -g
 
-pairs : pairs.cpp scanpairs.cpp
+pairs : pairs.cpp scanpairs.cpp copmpr.cpp
 	@echo "Pairs - Clearing"
 	clear
-	g++ $(CFLAGS) $(DEBUG) $@.cpp scanpairs.cpp -o ../bin/$@
+	g++ $(CFLAGS) $(DEBUG) $@.cpp scanpairs.cpp copmpr.cpp -o ../bin/$@
 	@ln -fs ../bin/$@ ../bin/bin_link
 	@symlinks -v ../bin
 	

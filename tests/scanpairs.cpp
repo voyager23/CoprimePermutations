@@ -3,7 +3,7 @@
 #include <vector>
 #include <array>
 #include <iostream>
-#include "./scanpairs.hpp"
+#include "../inc/scanpairs.hpp"
 
 
 ScanPairs::ScanPairs(int n){
@@ -44,10 +44,14 @@ void ScanPairs::pairwise_scan(){
 
 //----------------------------------------------------------
 
-void ScanPairs::triples(){
+void ScanPairs::triples(int n){
 	// Places triples in instance results vector
-	vector<int> even{2,4,6,8,10};
-	vector<int> odd{3,5,7,9};
+	vector<int> even{};
+	vector<int> odd{};
+	for(int x = 3; x < n; x += 2){
+		odd.push_back(x);
+		even.push_back(x+1);
+	}
 	Triple triple;
 	int x,y,z; //indexes
 	if(results.empty()==false) results.clear();
