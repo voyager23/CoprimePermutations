@@ -29,21 +29,24 @@
 
 int main(int argc, char **argv)
 {
-	ScanPairs scanpairs(34);
-	do{
-		scanpairs.pairwise_scan();
-	}while (scanpairs.scan_flag == true);
+	//~ ScanPairs scanpairs(34);
+	//~ do{
+		//~ scanpairs.pairwise_scan();
+	//~ }while (scanpairs.scan_flag == true);
 	
 	ScanPairs sp;
-	sp.triples(10);
+	sp.triples(12);
 	
 	sp.make_fwd_set();
 	sp.make_bak_set();
-	cout << endl;
 	
+	cout << endl;
 	sp.prt_fwd_set();
 	cout << endl;
 	sp.prt_bak_set();
+	
+	// list any triple for which center satisfies N//2 + 1. N=10 center=6, N=12 center=7.
+	
 	
 	return 0;
 }

@@ -48,10 +48,11 @@ void ScanPairs::triples(int n){
 	// Places triples in instance results vector
 	vector<int> even{};
 	vector<int> odd{};
-	for(int x = 3; x < n; x += 2){
-		odd.push_back(x);
-		even.push_back(x+1);
+	for(int x = 2; x < n; x += 2){
+		even.push_back(x);
+		odd.push_back(x+1);
 	}
+	even.push_back(n);
 	Triple triple;
 	int x,y,z; //indexes
 	if(results.empty()==false) results.clear();
