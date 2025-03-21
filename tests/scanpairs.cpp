@@ -42,7 +42,7 @@ void ScanPairs::pairwise_scan(){
 	}
 }
 
-//----------------------------------------------------------
+//==========================================================
 
 void ScanPairs::triples(int n){
 	// Places triples in instance results vector
@@ -62,8 +62,8 @@ void ScanPairs::triples(int n){
 				if ((gcd(even[x], odd[z]) == 1) and (gcd(even[y], odd[z]) == 1)){
 					triple = {even[x], odd[z], even[y]};
 					results.push_back(triple);
-					for(auto t : triple) cout << t << " ";
-					cout << endl;
+					//~ for(auto t : triple) cout << t << " ";
+					//~ cout << endl;
 				}
 			}
 		}
@@ -98,7 +98,19 @@ void ScanPairs::prt_bak_set(){
 	for(auto t : bakset) cout << get<0>(t) << " " << get<1>(t) << " " << get<2>(t) << endl;
 	}
 
+vector<Triple> ScanPairs::get_fwd_set(){
+	// convert set to vector
+	vector<Triple> fwd_vec;
+	for(Triple i : fwdset) fwd_vec.push_back(i);
+	return fwd_vec;
+	}
 	
+void ScanPairs::prt_triple(Triple t){
+	cout << get<0>(t) << " " << get<1>(t) << " " << get<2>(t) << "   ";
+	}	
+
+
+
 	
 	
 	

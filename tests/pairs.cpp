@@ -27,6 +27,8 @@
 #include "../inc/scanpairs.hpp"
 #include "../inc/copmpr.hpp"
 
+using namespace std;
+
 int main(int argc, char **argv)
 {
 	//~ ScanPairs scanpairs(34);
@@ -36,18 +38,33 @@ int main(int argc, char **argv)
 	
 	ScanPairs sp;
 	sp.triples(12);
-	
 	sp.make_fwd_set();
-	sp.make_bak_set();
 	
+	vector<Triple> fwd_set = sp.get_fwd_set();
+	for(Triple t : fwd_set) cout << get<0>(t) << " " << get<1>(t) << " " << get<2>(t) << endl;
+	
+	const int MSD = 8;
+	vector<Triple> subset;
+	for(Triple t : fwd_set) 
+		if (get<2>(t) == MSD) subset.push_back(t);
 	cout << endl;
-	sp.prt_fwd_set();
-	cout << endl;
-	sp.prt_bak_set();
 	
-	// list any triple for which center satisfies N//2 + 1. N=10 center=6, N=12 center=7.
+	//for(Triple t : subset) cout << get<0>(t) << " " << get<1>(t) << " " << get<2>(t) << endl;
 	
-	
+	// for each triple in subset find/print 1 or more possible continuations
+	for(Triple &x : subset){
+		vector<Triple> results = {x};
+		for(Triple &y : subset){
+			if ((x == y) or (get<0>(x) == get<0>(y)) or (get<1>(x) == get<1>(y))) continue;
+			results.push_back(y);
+		}
+		for(Triple &z : results) {
+			sp.prt_triple(z);
+			cout << "   ";
+		}
+		cout << endl;
+	}
+
 	return 0;
 }
 
